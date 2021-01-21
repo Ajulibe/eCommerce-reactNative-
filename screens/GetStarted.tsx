@@ -1,11 +1,13 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Colors from "../constants/Colors";
-import Font from "../constants/Font";
+
+import Button from "../components/UI/Button";
+import { MyText } from "../components/UI/MyText";
 
 const SplashScreen: React.FC = ({ navigation }: any) => {
   return (
@@ -20,19 +22,23 @@ const SplashScreen: React.FC = ({ navigation }: any) => {
           source={require("../images/images/Carrot.png")}
           style={styles.carrot}
         />
-        <Text style={styles.header}>Welcome</Text>
-        <Text style={styles.header}>to our store</Text>
-        <Text style={styles.get}>
-          Get your groceries in as fast as one hour
-        </Text>
-        <TouchableOpacity
-          style={styles.button}
+
+        <MyText title={"Welcome"} h1 style={styles.textColor} />
+        <MyText title={"to our store"} h1 style={styles.textColor} />
+        <MyText
+          title={"Get your groceries in as fast as one hour"}
+          small
+          style={styles.get}
+        />
+        <Button
+          Color={Colors.primary}
+          marginBottom="0%"
           onPress={() => {
             navigation.navigate("Auth");
           }}
         >
-          <Text style={styles.content}>Get Started</Text>
-        </TouchableOpacity>
+          <MyText title={"Get Started"} h5 style={styles.textColor} />
+        </Button>
       </View>
     </View>
   );
@@ -48,7 +54,7 @@ const styles = StyleSheet.create({
     height: hp("100%"),
     width: wp("100%"),
     zIndex: 20,
-    resizeMode: "cover",
+    resizeMode: "stretch",
     justifyContent: "center",
     alignContent: "center",
     position: "relative",
@@ -65,33 +71,14 @@ const styles = StyleSheet.create({
   get: {
     color: "#ffffff",
     marginBottom: hp("6%"),
-    fontSize: Font.smaller,
-    fontWeight: "100",
     marginTop: hp("2%"),
-    fontFamily: "gilroy-light",
   },
-  header: {
-    fontSize: Font.large,
-    color: "white",
-    fontFamily: "gilroy-bold",
+  textColor: {
+    color: "#ffffff",
   },
   carrot: {
     height: hp("9%"),
     width: wp("9%"),
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: Colors.primary,
-    padding: 10,
-    width: wp("90%"),
-    height: hp("9%"),
-    borderRadius: 19,
-  },
-  content: {
-    color: "#ffffff",
-    fontSize: Font.smaller,
-    fontFamily: "gilroy-medium",
   },
 });
 

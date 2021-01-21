@@ -13,6 +13,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import Button from "../components/UI/Button";
 import Colors from "../constants/Colors";
 
 const PhoneAuth: React.FC = ({ navigation }: any) => {
@@ -33,8 +34,9 @@ const PhoneAuth: React.FC = ({ navigation }: any) => {
           <TextInput style={styles.number} value="" />
           <Text style={styles.connect}>Or connect with social media</Text>
 
-          <TouchableOpacity
-            style={[styles.button, styles.topbutton]}
+          <Button
+            Color="#5383Ec"
+            marginBottom={hp("3%")}
             onPress={() => {
               navigation.navigate("Register");
             }}
@@ -44,14 +46,20 @@ const PhoneAuth: React.FC = ({ navigation }: any) => {
               source={require("../images/images/google.png")}
             />
             <Text style={styles.content}>Continue with Google</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, styles.bottombutton]}>
+          </Button>
+          <Button
+            Color="#4A66AC"
+            marginBottom="0%"
+            onPress={() => {
+              console.log("pressed");
+            }}
+          >
             <Image
               style={styles.facebook}
               source={require("../images/images/facebook.png")}
             />
             <Text style={styles.content}>Continue with Facebook</Text>
-          </TouchableOpacity>
+          </Button>
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -92,15 +100,6 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 18,
     fontFamily: "gilroy-medium",
-  },
-  topbutton: {
-    marginBottom: hp("3%"),
-    backgroundColor: "#5383Ec",
-    flexDirection: "row",
-  },
-  bottombutton: {
-    backgroundColor: "#4A66AC",
-    flexDirection: "row",
   },
   connect: {
     marginBottom: hp("4%"),

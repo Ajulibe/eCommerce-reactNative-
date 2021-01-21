@@ -1,0 +1,35 @@
+import { MyText } from './src/components/MyText'
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <MyText title={'Header 1'} h1/>
+      <MyText title={'Header 2'} h2/>
+      <MyText title={'Header 3'} h3/>
+      <MyText title={'Header 4'} h4/>
+      <MyText title={'Header 5'} h5/>
+      <MyText title={'Small Text'} p/>
+      <MyText title={'Header 1'} h1 italic/>
+      <MyText title={'Header 1'} h1 bold/>
+      <MyText title={'Header 2'} h2 italic/>
+      <MyText title={'Header 2'} h2 bold/>
+      <MyText title={'Header 3'} h3 italic/>
+      <MyText title={'Header 3'} h3 bold/>
+      <MyText title={'Header 4'} h4 italic/>
+      <MyText title={'Header 4'} h4 bold/>
+      <MyText title={'Header 5'} h5 italic/>
+      <MyText title={'Header 5'} h5 bold/>
+      <MyText title={'Small Text'} p italic/>
+      <MyText title={'Small Text'} p bold/>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

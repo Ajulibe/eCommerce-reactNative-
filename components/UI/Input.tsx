@@ -1,5 +1,9 @@
 import React, { useReducer, useEffect } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 const INPUT_CHANGE = "INPUT_CHANGE";
 const INPUT_BLUR = "INPUT_BLUR";
@@ -14,6 +18,28 @@ interface IAction {
   type: string;
   value?: string;
   isValid?: boolean;
+}
+
+interface Props {
+  id: string;
+  label: string | null;
+  keyboardType: any;
+  secureTextEntry: boolean;
+  required: boolean;
+  minLength: number;
+  autoCapitalize: any;
+  errorText: string;
+  initialValue: string;
+  initiallyValid: boolean;
+  email?: string | null;
+  min?: number | null;
+  max?: number | null;
+  value?: string | null;
+  textContentType: any;
+  returnKeyType: any;
+  placeholder?: string;
+  placeholderTextColor?: any;
+  onInputChange: (id: string, x?: string | null, y?: boolean) => void;
 }
 
 const inputReducer = (state: InitialStateType, action: IAction) => {
@@ -34,28 +60,13 @@ const inputReducer = (state: InitialStateType, action: IAction) => {
   }
 };
 
-const Input: React.FC<{
-  id: string;
-  label: string;
-  keyboardType: any;
-  secureTextEntry: boolean;
-  required: boolean;
-  minLength: number;
-  autoCapitalize: any;
-  errorText: string;
-  initialValue: string;
-  initiallyValid: boolean;
-  email: string;
-  min: number;
-  max: number;
-  value?: string | null;
-  onInputChange: (id: string, x?: string | null, y?: boolean) => void;
-}> = (props) => {
+const Input: React.FC<Props> = (props) => {
   const initialState = {
     value: props.initialValue ? props.initialValue : "",
     isValid: props.initiallyValid,
     touched: false,
   };
+
   const [inputState, dispatch] = useReducer(inputReducer, initialState);
 
   const { onInputChange, id } = props;
@@ -115,8 +126,10 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   label: {
+    fontSize: 14,
     fontFamily: "gilroy-medium",
-    marginVertical: 8,
+    color: "#7C7C7C",
+    marginBottom: hp("2%"),
   },
   input: {
     paddingHorizontal: 2,
@@ -128,6 +141,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   errorText: {
+    marginTop: hp("1%"),
     fontFamily: "gilroy-regular",
     color: "red",
     fontSize: 13,
