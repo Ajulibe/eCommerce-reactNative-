@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: hp("4%"),
+    marginLeft: wp("5%"),
   },
 });
 

@@ -16,6 +16,8 @@ import Colors from "../../constants/Colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
 import Products from "./Products";
+import CategoryTitle from "./CategoryTitle";
+import Groceries from "./Groceries";
 
 const ProductList = ({ navigation }: any) => {
   const [search, setSearch] = useState<string>("");
@@ -67,26 +69,12 @@ const ProductList = ({ navigation }: any) => {
             source={require("../../images/images/banner.png")}
           />
         </TouchableOpacity>
-
-        <View style={styles.exclusive}>
-          <Text
-            style={{ color: "black", fontSize: 24, fontFamily: "gilroy-bold" }}
-          >
-            Exclusive Offer
-          </Text>
-          <Text
-            style={{
-              color: Colors.primary,
-              fontSize: 16,
-              fontFamily: "gilroy-medium",
-            }}
-          >
-            See all
-          </Text>
-        </View>
-
+        <CategoryTitle title="Exclusive Offer" />
         <Products />
+        <CategoryTitle title="Best Selling" />
         <Products />
+        <CategoryTitle title="Groceries" />
+        <Groceries />
       </View>
     </ScrollView>
   );
@@ -97,8 +85,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     flex: 1,
     alignItems: "center",
-    borderColor: "red",
-    borderWidth: 3,
   },
   productView: {
     width: wp("100%"),
