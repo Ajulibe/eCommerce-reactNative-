@@ -12,14 +12,8 @@ const ProductList = ({ navigation }: any) => {
   return (
     <ScrollView
       horizontal={true}
-      style={{
-        flex: 1,
-        paddingLeft: 20,
-        paddingRight: 20,
-        backgroundColor: "transparent",
-        borderColor: "red",
-        borderWidth: 2,
-      }}
+      style={{ flex: 1 }}
+      showsHorizontalScrollIndicator={false}
     >
       <View style={styles.exclusive}>
         <View style={styles.productContainer}>
@@ -98,20 +92,21 @@ const styles = StyleSheet.create({
     width: wp("20%"),
   },
   productContainer: {
-    width: "45%",
+    width: wp("45%"),
     height: hp("30%"),
     borderColor: "#F2F3F2",
     borderWidth: 1.5,
     borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",
+    marginRight: wp("4%"),
   },
   priceandbutton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: "10%",
-    marginBottom: "10%",
+    marginTop: hp("1%"),
+    marginBottom: hp("3%"),
   },
   addbtn: {
     width: wp("13%"),
@@ -120,6 +115,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     justifyContent: "center",
     alignItems: "center",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowColor: "black",
+    shadowOpacity: 0.2,
   },
   productname: {
     color: "#181725",
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     color: "#7C7C7C",
     fontFamily: "gilroy-medium",
     fontSize: 14,
-    marginTop: "3%",
+    marginTop: hp("1%"),
   },
   productprice: {
     color: "#181725",
@@ -138,11 +139,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   exclusive: {
-    width: wp("90%"),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: hp("3%"),
+    marginBottom: hp("4%"),
   },
 });
 
