@@ -1,13 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,

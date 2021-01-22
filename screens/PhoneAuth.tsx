@@ -4,16 +4,16 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Text,
-  TouchableOpacity,
+  Image as Logo,
   TextInput,
   Platform,
-  Image,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Button from "../components/UI/Button";
+
 import Colors from "../constants/Colors";
 
 const PhoneAuth: React.FC = ({ navigation }: any) => {
@@ -24,9 +24,9 @@ const PhoneAuth: React.FC = ({ navigation }: any) => {
     >
       <View style={styles.screen}>
         <View style={styles.top}>
-          <Image
-            style={styles.topPic}
+          <Logo
             source={require("../images/images/topPic.png")}
+            style={styles.topPic}
           />
         </View>
         <View style={styles.bottom}>
@@ -36,27 +36,28 @@ const PhoneAuth: React.FC = ({ navigation }: any) => {
 
           <Button
             Color="#5383Ec"
-            marginBottom={hp("3%")}
             onPress={() => {
               navigation.navigate("Register");
             }}
+            style={{ marginBottom: hp("3%") }}
           >
-            <Image
-              style={styles.google}
+            <Logo
               source={require("../images/images/google.png")}
+              style={styles.google}
             />
+
             <Text style={styles.content}>Continue with Google</Text>
           </Button>
           <Button
             Color="#4A66AC"
-            marginBottom="0%"
+            style={{ marginBottom: "0%" }}
             onPress={() => {
               console.log("pressed");
             }}
           >
-            <Image
-              style={styles.facebook}
+            <Logo
               source={require("../images/images/facebook.png")}
+              style={styles.facebook}
             />
             <Text style={styles.content}>Continue with Facebook</Text>
           </Button>

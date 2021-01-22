@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, ImageBackground, Image } from "react-native";
+
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,34 +13,35 @@ import { MyText } from "../components/UI/MyText";
 const SplashScreen: React.FC = ({ navigation }: any) => {
   return (
     <View style={styles.screen}>
-      <Image
+      <ImageBackground
         source={require("../images/images/getstarted.png")}
         style={styles.background}
-      />
-      <View style={styles.info}>
-        <Image
-          resizeMode="contain"
-          source={require("../images/images/Carrot.png")}
-          style={styles.carrot}
-        />
+      >
+        <View style={styles.info}>
+          <Image
+            resizeMode="contain"
+            source={require("../images/images/Carrot.png")}
+            style={styles.carrot}
+          />
 
-        <MyText title={"Welcome"} h1 style={styles.textColor} />
-        <MyText title={"to our store"} h1 style={styles.textColor} />
-        <MyText
-          title={"Get your groceries in as fast as one hour"}
-          small
-          style={styles.get}
-        />
-        <Button
-          Color={Colors.primary}
-          marginBottom="0%"
-          onPress={() => {
-            navigation.navigate("Auth");
-          }}
-        >
-          <MyText title={"Get Started"} h5 style={styles.textColor} />
-        </Button>
-      </View>
+          <MyText title={"Welcome"} h1 style={styles.textColor} />
+          <MyText title={"to our store"} h1 style={styles.textColor} />
+          <MyText
+            title={"Get your groceries in as fast as one hour"}
+            small
+            style={styles.get}
+          />
+          <Button
+            Color={Colors.primary}
+            style={{ marginBottom: "0%" }}
+            onPress={() => {
+              navigation.navigate("Auth");
+            }}
+          >
+            <MyText title={"Get Started"} h5 style={styles.textColor} />
+          </Button>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -53,15 +55,11 @@ const styles = StyleSheet.create({
   background: {
     height: hp("100%"),
     width: wp("100%"),
-    zIndex: 20,
     resizeMode: "stretch",
-    justifyContent: "center",
-    alignContent: "center",
-    position: "relative",
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   info: {
-    zIndex: 100,
-    position: "absolute",
     bottom: hp("10%"),
     height: hp("45%"),
     width: wp("80%"),

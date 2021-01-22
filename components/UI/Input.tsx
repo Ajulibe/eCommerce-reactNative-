@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    fontFamily: "gilroy-medium",
+    fontFamily: "gilroy-bold",
     color: "#7C7C7C",
     marginBottom: hp("2%"),
   },

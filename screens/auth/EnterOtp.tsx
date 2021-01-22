@@ -1,13 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -41,7 +33,7 @@ const EnterOtp = ({ navigation }: any) => {
             <Ionicons name="chevron-back-outline" size={24} color="#212121" />
           </TouchableOpacity>
         </View>
-        <Text style={styles.groceries}>Enter your mobile number</Text>
+        <Text style={styles.groceries}>Enter your 4 digit code</Text>
         <Input
           placeholder="- - - -"
           placeholderTextColor="black"

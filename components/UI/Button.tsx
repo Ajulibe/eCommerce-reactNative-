@@ -5,32 +5,23 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-// interface Props {
-//   Color: string;
-//   onPress: () => void;
-//   children: any;
-//   marginBottom: string | number;
-//   marginTop: any;
-//   style: any;
-//   ...rest:any
-// }
+interface Props {
+  Color: string;
+  onPress: () => void;
+  children: any;
+  style: any;
+}
 
-const Button = ({
+const Button: React.FC<Props> = ({
   Color,
+  style,
   onPress,
   children,
-  marginBottom,
-  marginTop,
-  style,
   ...rest
-}: any) => {
+}) => {
   return (
     <TouchableOpacity
-      style={[
-        styles.button,
-        { backgroundColor: Color, marginBottom: marginBottom },
-        style,
-      ]}
+      style={[styles.button, { backgroundColor: Color }, style]}
       {...rest}
       onPress={onPress}
     >

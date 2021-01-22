@@ -4,30 +4,28 @@ import {
   StyleSheet,
   Text,
   Image,
-  TouchableOpacity,
+  KeyboardAvoidingView,
   Alert,
-  FlatList,
+  Platform,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Icon, Picker, Form } from "native-base";
-
-import { Ionicons } from "@expo/vector-icons";
+import Input from "../../components/UI/Input";
 import { BlurView } from "expo-blur";
 import Button from "../../components/UI/Button";
 import Colors from "../../constants/Colors";
-import nigerianStates from "../../components/Utils/nigerianStates.json";
+import { MyText } from "../../components/UI/MyText";
 
-const EnterNumber = ({ navigation }: any) => {
-  const [value, onChangeText] = useState("Useless Placeholder");
-  const [country, setCountry] = useState("uk");
-
+const Signup = ({ navigation }: any) => {
   const inputChangeHandler = useCallback(() => {}, []);
-
   return (
-    <View style={styles.screen}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.screen}
+    >
       <BlurView intensity={100} style={styles.image}>
         <Image
           style={styles.topPic}
@@ -35,85 +33,107 @@ const EnterNumber = ({ navigation }: any) => {
         />
       </BlurView>
       <View style={styles.textContainer}>
-        <View>
-          <TouchableOpacity
-            style={styles.back}
-            onPress={() => {
-              navigation.navigate("EnterOtp");
-            }}
-          >
-            <Ionicons name="chevron-back-outline" size={24} color="#212121" />
-          </TouchableOpacity>
-        </View>
         <View style={styles.locatorView}>
           <Image
             style={styles.locator}
-            source={require("../../images/images/Locator.png")}
+            source={require("../../images/images/ColoredCarrot.png")}
           />
         </View>
-        <View style={styles.center}>
-          <Text style={styles.groceries}>Select Your Location</Text>
-          <Text style={styles.switch}>
-            Switch on your location to stay in tune with what's happening in
-            your area
-          </Text>
+        <Text style={styles.signup}>Sign Up</Text>
+        <MyText
+          title="Enter your Credentials to continue"
+          h5
+          style={{ color: "#7C7C7C", marginBottom: hp("5%") }}
+        />
 
-          <Form>
-            <Picker
-              mode="dropdown"
-              iosIcon={
-                <Icon
-                  name="arrow-down-circle"
-                  style={{ color: Colors.primary, fontSize: 25 }}
-                />
-              }
-              placeholder="Select your State"
-              placeholderStyle={{
-                color: "#bfc6ea",
-                fontFamily: "gilroy-regular",
-              }}
-              placeholderIconColor={Colors.primary}
-              style={{ width: wp("80%") }}
-              selectedValue={country}
-              onValueChange={(selectedValue) => {
-                setCountry(selectedValue);
-              }}
-            >
-              {nigerianStates.map(function (item) {
-                return (
-                  <Picker.Item
-                    key={item.state}
-                    label={item.state}
-                    value={item.state}
-                  />
-                );
-              })}
-            </Picker>
-          </Form>
-        </View>
+        <Form>
+          <View style={{ marginBottom: hp("3%") }}>
+            <Input
+              placeholder=""
+              placeholderTextColor="black"
+              id="username"
+              label="Username"
+              errorText="* Please enter a valid Username"
+              keyboardType="default"
+              autoCapitalize="sentences"
+              returnKeyType="none"
+              onInputChange={inputChangeHandler}
+              initialValue=""
+              initiallyValid={false}
+              required
+              secureTextEntry={false}
+              minLength={11}
+              textContentType="telephoneNumber"
+            />
+          </View>
+          <View style={{ marginBottom: hp("3%") }}>
+            <Input
+              placeholder=""
+              placeholderTextColor="black"
+              id="phoneNumber"
+              label="Email"
+              errorText="* Please enter a valid Email"
+              keyboardType="email-address"
+              autoCapitalize="sentences"
+              returnKeyType="none"
+              onInputChange={inputChangeHandler}
+              initialValue=""
+              initiallyValid={false}
+              required
+              secureTextEntry={false}
+              minLength={11}
+              textContentType="telephoneNumber"
+            />
+          </View>
+          <Input
+            placeholder=""
+            placeholderTextColor="black"
+            id="phoneNumber"
+            label="Password"
+            errorText="* Please set a password"
+            keyboardType="default"
+            autoCapitalize="sentences"
+            returnKeyType="none"
+            onInputChange={inputChangeHandler}
+            initialValue=""
+            initiallyValid={false}
+            required
+            secureTextEntry={true}
+            minLength={11}
+            textContentType="telephoneNumber"
+          />
+          <Text
+            style={{
+              marginTop: hp("3%"),
+              color: "#7C7C7C",
+              fontSize: 14,
+              lineHeight: 22,
+              textAlign: "left",
+            }}
+          >
+            By continuing you agree to out{" "}
+            <Text style={{ color: Colors.primary }}>Terms of Service</Text>
+            &nbsp; and&nbsp;
+            <Text style={{ color: Colors.primary }}>Privacy Policy</Text>
+          </Text>
+        </Form>
       </View>
       <View style={styles.submitBtnStyle}>
         <Button
           Color={Colors.primary}
           onPress={() => {
-            navigation.navigate("Signup");
+            navigation.navigate("ProductFlow");
           }}
           style={styles.submitbtn}
         >
-          <Text style={styles.submit}>Submit</Text>
+          <Text style={styles.submit}>Sign Up</Text>
         </Button>
       </View>
-      <BlurView intensity={100}>
-        <Image
-          style={styles.botPic}
-          source={require("../../images/images/bottom.png")}
-        />
-      </BlurView>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
-EnterNumber.navigationOptions = () => {
+Signup.navigationOptions = () => {
   return {
     headerShown: false,
   };
@@ -139,6 +159,7 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     width: wp("90%"),
+    marginTop: hp("5%"),
   },
   groceries: {
     width: wp("100%"),
@@ -184,8 +205,8 @@ const styles = StyleSheet.create({
   },
   locator: {
     resizeMode: "contain",
-    height: hp("30%"),
-    width: wp("44%"),
+    height: hp("9%"),
+    width: wp("10%"),
   },
   locatorView: {
     justifyContent: "center",
@@ -239,6 +260,14 @@ const styles = StyleSheet.create({
     zIndex: 1000,
     height: hp("10%"),
   },
+  signup: {
+    width: wp("60%"),
+    lineHeight: 35,
+    fontSize: 26,
+    fontFamily: "gilroy-bold",
+    marginBottom: hp("3%"),
+    marginTop: hp("3%"),
+  },
 });
 
-export default EnterNumber;
+export default Signup;

@@ -24,7 +24,7 @@ const MyText = ({
         h3 && { fontSize: adjust(35) },
         h4 && { fontSize: adjust(25) },
         h5 && {
-          fontSize: adjust(15),
+          fontSize: adjust(14),
           fontFamily: "gilroy-medium",
         },
         small && { fontSize: adjust(12), fontFamily: "gilroy-light" },

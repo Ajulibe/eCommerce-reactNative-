@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import NavigationContainer from "./navigation/NavigationContainer";
+import { View, StatusBar } from "react-native";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -26,5 +27,10 @@ export default function App() {
       />
     );
   }
-  return <NavigationContainer />;
+  return (
+    <View style={{ flex: 1 }}>
+      <StatusBar hidden={true} />
+      <NavigationContainer />
+    </View>
+  );
 }
