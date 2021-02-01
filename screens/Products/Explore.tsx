@@ -20,6 +20,7 @@ import {
   NavigationBottomTabScreenComponent,
 } from "react-navigation-tabs";
 import Colors from "../../constants/Colors";
+import FindProductList from "./FindProductList";
 
 type Props = {
   navigation: NavigationTabProp<{ userId: string }>;
@@ -72,28 +73,7 @@ const Explore: NavigationBottomTabScreenComponent<Props> = (props) => {
               }}
             />
           </View>
-          <View style={styles.exclusive}>
-            <View style={styles.productContainer}>
-              <Image
-                style={styles.products}
-                source={require("../../images/images/potato.png")}
-              />
-              <View style={{ width: "80%" }}>
-                <Text style={styles.productname}>
-                  Fresh Fruits and Vegetable
-                </Text>
-              </View>
-            </View>
-            <View style={styles.productContainer}>
-              <Image
-                style={styles.products}
-                source={require("../../images/images/apple.png")}
-              />
-              <View style={{ width: "80%" }}>
-                <Text style={styles.productname}>Cooking Oil and Ghee </Text>
-              </View>
-            </View>
-          </View>
+          <FindProductList />
         </View>
       </ScrollView>
     </SafeAreaView>
