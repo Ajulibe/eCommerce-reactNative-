@@ -5,79 +5,101 @@ import {
   Text,
   Image,
   ScrollView,
-  ImageBackground,
+  SafeAreaView,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { SearchBar } from "react-native-elements";
-import Colors from "../../constants/Colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Ionicons } from "@expo/vector-icons";
 import Products from "./Products";
 import CategoryTitle from "./CategoryTitle";
 import Groceries from "./Groceries";
+import {
+  NavigationTabProp,
+  NavigationBottomTabScreenComponent,
+} from "react-navigation-tabs";
+import { Entypo } from "@expo/vector-icons";
 
-const ProductList = ({ navigation }: any) => {
+type Props = {
+  navigation: NavigationTabProp<{ userId: string }>;
+};
+
+const ProductList: NavigationBottomTabScreenComponent<Props> = (props) => {
   const [search, setSearch] = useState<string>("");
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Image
-          style={styles.carrot}
-          source={require("../../images/images/ColoredCarrot.png")}
-        />
-        <Text
-          style={{
-            fontFamily: "gilroy-bold",
-            fontSize: 18,
-            color: "#4C4F4D",
-            marginBottom: hp("2%"),
-          }}
-        >
-          Dhaka, Banassre
-        </Text>
-        <SearchBar
-          inputStyle={{
-            backgroundColor: "#F2F3F2",
-            fontSize: 14,
-            fontFamily: "gilroy-bold",
-            color: "#7C7C7C",
-          }}
-          inputContainerStyle={{
-            backgroundColor: "#F2F3F2",
-            borderRadius: 19,
-            height: hp("8%"),
-          }}
-          placeholder="Search Store"
-          onChangeText={setSearch}
-          value={search}
-          lightTheme={true}
-          containerStyle={{
-            width: wp("98%"),
-            backgroundColor: "#ffffff",
-          }}
-        />
-        <TouchableOpacity>
+    <SafeAreaView style={{ backgroundColor: "#FfFfFf" }}>
+      <ScrollView>
+        <View style={styles.container}>
           <Image
-            style={{
-              resizeMode: "contain",
-              height: hp("24%"),
-              width: wp("90%"),
-            }}
-            source={require("../../images/images/banner.png")}
+            style={styles.carrot}
+            source={require("../../images/images/ColoredCarrot.png")}
           />
-        </TouchableOpacity>
-        <CategoryTitle title="Exclusive Offer" />
-        <Products />
-        <CategoryTitle title="Best Selling" />
-        <Products />
-        <CategoryTitle title="Groceries" />
-        <Groceries />
-      </View>
-    </ScrollView>
+          <Text
+            style={{
+              fontFamily: "gilroy-bold",
+              fontSize: 18,
+              color: "#4C4F4D",
+              marginBottom: hp("2%"),
+            }}
+          >
+            Dhaka, Banassre
+          </Text>
+          <SearchBar
+            inputStyle={{
+              backgroundColor: "#F2F3F2",
+              fontSize: 14,
+              fontFamily: "gilroy-bold",
+              color: "#7C7C7C",
+            }}
+            inputContainerStyle={{
+              backgroundColor: "#F2F3F2",
+              borderRadius: 15,
+              height: hp("6%"),
+            }}
+            placeholder="Search Store"
+            onChangeText={setSearch}
+            value={search}
+            lightTheme={true}
+            containerStyle={{
+              width: wp("98%"),
+              backgroundColor: "#ffffff",
+            }}
+          />
+          <TouchableOpacity>
+            <Image
+              style={{
+                resizeMode: "contain",
+                height: hp("24%"),
+                width: wp("90%"),
+              }}
+              source={require("../../images/images/banner.png")}
+            />
+          </TouchableOpacity>
+          <CategoryTitle title="Exclusive Offer" />
+          <Products
+            onPress={() => {
+              props.navigation.navigate("ProductDetails");
+            }}
+          />
+          <CategoryTitle title="Best Selling" />
+          <Products />
+          <CategoryTitle title="Groceries" />
+          <Groceries />
+          <Products />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
+};
+
+ProductList.navigationOptions = {
+  tabBarLabel: "Shop",
+  // tabBarIcon: <Entypo name="shop" size={18} color="black" />,
+  tabBarIcon: ({ tintColor }) => (
+    <Entypo name="shop" size={18} color={tintColor} />
+  ),
 };
 
 const styles = StyleSheet.create({
@@ -91,9 +113,9 @@ const styles = StyleSheet.create({
   },
   carrot: {
     resizeMode: "contain",
-    height: hp("9%"),
-    width: wp("10%"),
-    marginTop: hp("3%"),
+    height: hp("7%"),
+    width: wp("9%"),
+    marginTop: hp("5%"),
     marginBottom: hp("2%"),
   },
   exclusive: {

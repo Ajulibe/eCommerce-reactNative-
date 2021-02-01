@@ -37,6 +37,27 @@ const Groceries = ({ navigation }: any) => {
 
           <Text style={styles.productname}>Pulses</Text>
         </View>
+        <View style={styles.productContainer}>
+          <Image
+            style={styles.products}
+            source={require("../../images/images/potato.png")}
+          />
+
+          <Text style={styles.productname}>Pulses</Text>
+        </View>
+        <View
+          style={[
+            styles.productContainer,
+            { backgroundColor: "#BCF9D2", borderColor: "#97E5B3" },
+          ]}
+        >
+          <Image
+            style={styles.products}
+            source={require("../../images/images/potato.png")}
+          />
+
+          <Text style={styles.productname}>Pulses</Text>
+        </View>
       </View>
     </ScrollView>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -8,7 +8,7 @@ import Colors from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 
-const ProductList = ({ navigation }: any) => {
+const ProductList = ({ navigation, onPress }: any) => {
   return (
     <ScrollView
       horizontal={true}
@@ -26,9 +26,11 @@ const ProductList = ({ navigation }: any) => {
             <Text style={styles.productquantity}>7pcs</Text>
             <View style={styles.priceandbutton}>
               <Text style={styles.productprice}>$4.99 </Text>
-              <View style={styles.addbtn}>
-                <Ionicons name="add" size={24} color="white" />
-              </View>
+              <TouchableOpacity onPress={onPress}>
+                <View style={styles.addbtn}>
+                  <Ionicons name="add" size={24} color="white" />
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -42,9 +44,11 @@ const ProductList = ({ navigation }: any) => {
             <Text style={styles.productquantity}>1kg</Text>
             <View style={styles.priceandbutton}>
               <Text style={styles.productprice}>$4.99 </Text>
-              <View style={styles.addbtn}>
-                <Ionicons name="add" size={24} color="white" />
-              </View>
+              <TouchableOpacity>
+                <View style={styles.addbtn}>
+                  <Ionicons name="add" size={24} color="white" />
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -58,9 +62,11 @@ const ProductList = ({ navigation }: any) => {
             <Text style={styles.productquantity}>7pcs</Text>
             <View style={styles.priceandbutton}>
               <Text style={styles.productprice}>$4.99 </Text>
-              <View style={styles.addbtn}>
-                <Ionicons name="add" size={24} color="white" />
-              </View>
+              <TouchableOpacity>
+                <View style={styles.addbtn}>
+                  <Ionicons name="add" size={24} color="white" />
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -74,9 +80,11 @@ const ProductList = ({ navigation }: any) => {
             <Text style={styles.productquantity}>1kg</Text>
             <View style={styles.priceandbutton}>
               <Text style={styles.productprice}>$4.99 </Text>
-              <View style={styles.addbtn}>
-                <Ionicons name="add" size={24} color="white" />
-              </View>
+              <TouchableOpacity>
+                <View style={styles.addbtn}>
+                  <Ionicons name="add" size={24} color="white" />
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
