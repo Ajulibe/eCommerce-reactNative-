@@ -39,7 +39,13 @@ const ProductRating = ({ navigation }: any) => {
           alignItems: "center",
         }}
       >
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <TouchableOpacity>
             <Entypo name="star" size={15} color="#F3603F" />
           </TouchableOpacity>

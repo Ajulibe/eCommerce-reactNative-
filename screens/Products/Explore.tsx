@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Text,
-  ScrollView,
-  SafeAreaView,
-} from "react-native";
+import { View, StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { SearchBar } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
 import {
   NavigationTabProp,
   NavigationBottomTabScreenComponent,
@@ -30,50 +21,94 @@ const Explore: NavigationBottomTabScreenComponent<Props> = (props) => {
   const [search, setSearch] = useState<string>("");
   return (
     <SafeAreaView style={{ backgroundColor: "#FfFfFf" }}>
+      <View style={{ alignItems: "center" }}>
+        <Text
+          style={{
+            fontFamily: "gilroy-bold",
+            fontSize: 20,
+            color: "#181725",
+            marginBottom: hp("1.4%"),
+          }}
+        >
+          Find Products
+        </Text>
+        <SearchBar
+          inputStyle={{
+            backgroundColor: "#F2F3F2",
+            fontSize: 14,
+            fontFamily: "gilroy-bold",
+            color: "#7C7C7C",
+          }}
+          inputContainerStyle={{
+            backgroundColor: "#F2F3F2",
+            borderRadius: 15,
+            height: hp("6%"),
+          }}
+          placeholder="Search Store"
+          onChangeText={setSearch}
+          value={search}
+          lightTheme={true}
+          containerStyle={{
+            width: wp("98%"),
+            backgroundColor: "#ffffff",
+          }}
+        />
+      </View>
       <ScrollView>
         <View style={styles.container}>
-          <View
-            style={{
-              height: hp("20%"),
-              borderWidth: 10,
-              borderColor: "red",
-              justifyContent: "center",
-              alignItems: "center",
+          <FindProductList
+            productname1="Fresh Fruits And Vegetable"
+            productname2="Cooking Oil And Ghee"
+            borderColor2="#FFC589"
+            backgroundColor2="#FFFBF8"
+            borderColor="#53B175"
+            backgroundColor="#F7FCF8"
+            source1={require("../../images/images/vegetable.png")}
+            source2={require("../../images/images/oil.png")}
+          />
+          <FindProductList
+            productname1="Meat And Fish"
+            productname2="Bakery And Snacks"
+            borderColor2="#D3B0E0"
+            backgroundColor2="#FCF4FF"
+            borderColor="#F7A593"
+            backgroundColor="#FFF7F5"
+            source1={require("../../images/images/meat.png")}
+            source2={require("../../images/images/bakery.png")}
+          />
+          <FindProductList
+            productname1="Diary And Eggs"
+            productname2="Beverages"
+            borderColor2="#B7DFF5"
+            backgroundColor2="#ECF9FF"
+            borderColor="#FDE598"
+            backgroundColor="#FFFCF4"
+            source1={require("../../images/images/Diary.png")}
+            source2={require("../../images/images/Beverage.png")}
+            onPress2={() => {
+              props.navigation.navigate("FindProductDetail");
             }}
-          >
-            <Text
-              style={{
-                fontFamily: "gilroy-bold",
-                fontSize: 20,
-                color: "#181725",
-                marginBottom: hp("2%"),
-              }}
-            >
-              Find Products
-            </Text>
-            <SearchBar
-              inputStyle={{
-                backgroundColor: "#F2F3F2",
-                fontSize: 14,
-                fontFamily: "gilroy-bold",
-                color: "#7C7C7C",
-              }}
-              inputContainerStyle={{
-                backgroundColor: "#F2F3F2",
-                borderRadius: 15,
-                height: hp("6%"),
-              }}
-              placeholder="Search Store"
-              onChangeText={setSearch}
-              value={search}
-              lightTheme={true}
-              containerStyle={{
-                width: wp("98%"),
-                backgroundColor: "#ffffff",
-              }}
-            />
-          </View>
-          <FindProductList />
+          />
+          <FindProductList
+            productname1="Diary And Eggs"
+            productname2="Beverages"
+            borderColor2="#FFC589"
+            backgroundColor2="#FFFBF8"
+            borderColor="#53B175"
+            backgroundColor="#F7FCF8"
+            source1={require("../../images/images/vegetable.png")}
+            source2={require("../../images/images/oil.png")}
+          />
+          <FindProductList
+            productname1="Fresh Fruits And Vegetable"
+            productname2="Cooking Oil And Ghee"
+            borderColor2="#FFC589"
+            backgroundColor2="#FFFBF8"
+            borderColor="#53B175"
+            backgroundColor="#F7FCF8"
+            source1={require("../../images/images/meat.png")}
+            source2={require("../../images/images/bakery.png")}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -92,6 +127,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     flex: 1,
     alignItems: "center",
+    paddingTop: hp("1.2%"),
   },
   productView: {
     width: wp("100%"),
@@ -105,12 +141,9 @@ const styles = StyleSheet.create({
   },
   exclusive: {
     width: wp("100%"),
-    borderWidth: 10,
-    borderColor: "red",
     flexDirection: "row",
     height: hp("80%"),
     justifyContent: "space-around",
-    //alignItems: "center",
   },
   products: {
     resizeMode: "contain",
@@ -121,7 +154,7 @@ const styles = StyleSheet.create({
     width: wp("45%"),
     height: hp("25%"),
     borderColor: "#F2F3F2",
-    borderWidth: 1.5,
+    borderWidth: 1,
     borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",

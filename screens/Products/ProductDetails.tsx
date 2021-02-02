@@ -5,10 +5,15 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
+import { NavigationTabProp } from "react-navigation-tabs";
 
 import ProductDescription from "./ProductDescription";
 
-const ProductDetails = ({ navigation }: any) => {
+interface Navigation {
+  navigation: NavigationTabProp<{ screen: string }>;
+}
+
+const ProductDetails = ({ navigation }: Navigation) => {
   return (
     <View style={styles.screen}>
       <View style={styles.display}>

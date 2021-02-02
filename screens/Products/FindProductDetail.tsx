@@ -34,7 +34,9 @@ type Props = {
   navigation: ProductListScreenProp;
 };
 
-const ProductList: NavigationBottomTabScreenComponent<Props> = (props) => {
+const FindProductDetail: NavigationBottomTabScreenComponent<Props> = (
+  props
+) => {
   const [search, setSearch] = useState<string>("");
 
   return (
@@ -106,7 +108,7 @@ const ProductList: NavigationBottomTabScreenComponent<Props> = (props) => {
 ///to pass functions from the body of the component to the navigation options,
 //we must firstly set up the function as a parameter using navigation.setParams and
 //later get it using navigation.getParams.
-ProductList.navigationOptions = () => ({
+FindProductDetail.navigationOptions = () => ({
   tabBarLabel: "Shop",
   tabBarIcon: ({ tintColor }) => (
     <Entypo name="shop" size={18} color={tintColor} />
@@ -147,4 +149,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductList;
+export default FindProductDetail;

@@ -1,37 +1,69 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-import {
-  NavigationTabProp,
-  NavigationBottomTabScreenComponent,
-} from "react-navigation-tabs";
-import Colors from "../../constants/Colors";
+interface Props {
+  productname1: string;
+  productname2: string;
+  borderColor: string;
+  backgroundColor: string;
+  borderColor2: string;
+  backgroundColor2: string;
+  source1: any;
+  source2: any;
+  onPress1?: () => void;
+  onPress2?: () => void;
+}
 
-const Explore = () => {
+const FindProductList: React.FC<Props> = ({
+  productname1,
+  productname2,
+  backgroundColor2,
+  borderColor2,
+  backgroundColor,
+  borderColor,
+  source1,
+  source2,
+  onPress1,
+  onPress2,
+}) => {
   return (
     <View style={styles.exclusive}>
-      <View style={styles.productContainer}>
-        <Image
-          style={styles.products}
-          source={require("../../images/images/potato.png")}
-        />
-        <View style={{ width: "80%" }}>
-          <Text style={styles.productname}>Fresh Fruits and Vegetable</Text>
+      <TouchableOpacity onPress={onPress1}>
+        <View
+          style={[
+            styles.productContainer,
+            {
+              borderColor: borderColor,
+              backgroundColor: backgroundColor,
+            },
+          ]}
+        >
+          <Image style={styles.products} source={source1} />
+          <View style={{ width: wp("40%") }}>
+            <Text style={styles.productname}>{productname1}</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.productContainer}>
-        <Image
-          style={styles.products}
-          source={require("../../images/images/apple.png")}
-        />
-        <View style={{ width: "80%" }}>
-          <Text style={styles.productname}>Cooking Oil and Ghee </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onPress2}>
+        <View
+          style={[
+            styles.productContainer2,
+            {
+              borderColor: borderColor2,
+              backgroundColor: backgroundColor2,
+            },
+          ]}
+        >
+          <Image style={styles.products} source={source2} />
+          <View style={{ width: wp("40%") }}>
+            <Text style={styles.productname}>{productname2}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -39,10 +71,8 @@ const Explore = () => {
 const styles = StyleSheet.create({
   exclusive: {
     width: wp("100%"),
-    borderWidth: 10,
-    borderColor: "red",
     flexDirection: "row",
-    height: hp("80%"),
+    marginBottom: hp("1.4%"),
     justifyContent: "space-around",
   },
   products: {
@@ -51,34 +81,24 @@ const styles = StyleSheet.create({
     width: wp("20%"),
   },
   productContainer: {
-    width: wp("45%"),
-    height: hp("25%"),
+    width: wp("43%"),
+    height: hp("22%"),
     borderColor: "#F2F3F2",
-    borderWidth: 1.5,
+    borderWidth: 1,
     borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",
+    paddingBottom: wp("3%"),
   },
-  priceandbutton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: hp("1%"),
-    marginBottom: hp("3%"),
-  },
-  addbtn: {
-    width: wp("13%"),
-    height: hp("7%"),
+  productContainer2: {
+    width: wp("43%"),
+    height: hp("22%"),
+    borderColor: "#F2F3F2",
+    borderWidth: 1,
     borderRadius: 19,
-    backgroundColor: Colors.primary,
-    justifyContent: "center",
     alignItems: "center",
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowColor: "black",
-    shadowOpacity: 0.2,
+    justifyContent: "center",
+    paddingBottom: wp("3%"),
   },
   productname: {
     color: "#181725",
@@ -100,4 +120,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Explore;
+export default FindProductList;

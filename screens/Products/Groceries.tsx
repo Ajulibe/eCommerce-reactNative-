@@ -4,8 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Colors from "../../constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
+
 import { ScrollView } from "react-native-gesture-handler";
 
 const Groceries = ({ navigation }: any) => {
@@ -27,7 +26,7 @@ const Groceries = ({ navigation }: any) => {
         <View
           style={[
             styles.productContainer,
-            { backgroundColor: "#BCF9D2", borderColor: "#97E5B3" },
+            { backgroundColor: "#F7FCF8", borderColor: "#53B175" },
           ]}
         >
           <Image
@@ -48,7 +47,7 @@ const Groceries = ({ navigation }: any) => {
         <View
           style={[
             styles.productContainer,
-            { backgroundColor: "#BCF9D2", borderColor: "#97E5B3" },
+            { backgroundColor: "#F7FCF8", borderColor: "#53B175" },
           ]}
         >
           <Image
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
     width: wp("55%"),
     height: hp("18%"),
     borderColor: "#FFC589",
-    borderWidth: 1.5,
+    borderWidth: 1,
     borderRadius: 19,
     alignItems: "center",
     justifyContent: "space-around",
