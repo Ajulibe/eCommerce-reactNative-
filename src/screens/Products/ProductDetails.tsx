@@ -5,18 +5,15 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
+import { NavigationTabProp } from "react-navigation-tabs";
+
 import ProductDescription from "./ProductDescription";
-import { AntDesign } from "@expo/vector-icons";
-import {
-  NavigationTabProp,
-  NavigationBottomTabScreenComponent,
-} from "react-navigation-tabs";
 
-type Props = {
-  navigation: NavigationTabProp<{ userId: string }>;
-};
+interface Navigation {
+  navigation: NavigationTabProp<{ screen: string }>;
+}
 
-const Favourite: NavigationBottomTabScreenComponent<Props> = (props) => {
+const ProductDetails = ({ navigation }: Navigation) => {
   return (
     <View style={styles.screen}>
       <View style={styles.display}>
@@ -24,7 +21,7 @@ const Favourite: NavigationBottomTabScreenComponent<Props> = (props) => {
           <TouchableOpacity
             style={styles.back}
             onPress={() => {
-              props.navigation.navigate("ProductList");
+              navigation.navigate("Shop");
             }}
           >
             <Ionicons name="chevron-back-outline" size={24} color="#212121" />
@@ -45,11 +42,11 @@ const Favourite: NavigationBottomTabScreenComponent<Props> = (props) => {
   );
 };
 
-Favourite.navigationOptions = {
-  tabBarLabel: "Favourite",
-  tabBarIcon: ({ tintColor }) => (
-    <AntDesign name="hearto" size={20} color={tintColor} />
-  ),
+ProductDetails.navigationOptions = () => {
+  return {
+    tabBarVisible: false,
+    headerShown: false,
+  };
 };
 
 const styles = StyleSheet.create({
@@ -90,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Favourite;
+export default ProductDetails;

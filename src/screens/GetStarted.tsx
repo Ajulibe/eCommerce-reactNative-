@@ -10,7 +10,7 @@ import Colors from "../constants/Colors";
 import Button from "../components/UI/Button";
 import { MyText } from "../components/UI/MyText";
 
-const SplashScreen: React.FC = ({ navigation }: any) => {
+const GetStarted: React.FC = ({ navigation }: any) => {
   return (
     <View style={styles.screen}>
       <ImageBackground
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SplashScreen;
+export default GetStarted;

@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   Logo: {
+    resizeMode: "contain",
     height: hp("10%"),
     width: wp("70%"),
     marginBottom: hp("10%"),

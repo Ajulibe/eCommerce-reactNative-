@@ -1,24 +1,16 @@
 import React, { useCallback, useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  Alert,
-  FlatList,
-} from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { Icon, Picker, Form } from "native-base";
+import { Picker, Form, Icon } from "native-base";
 
 import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import Button from "../../components/UI/Button";
 import Colors from "../../constants/Colors";
-import nigerianStates from "../../components/Utils/nigerianStates.json";
+import { states } from "../../components/Utils/nigerianStates";
 
 const EnterNumber = ({ navigation }: any) => {
   const [value, onChangeText] = useState("Useless Placeholder");
@@ -74,12 +66,8 @@ const EnterNumber = ({ navigation }: any) => {
               }}
               placeholderIconColor={Colors.primary}
               style={{ width: wp("80%") }}
-              selectedValue={country}
-              onValueChange={(selectedValue) => {
-                setCountry(selectedValue);
-              }}
             >
-              {nigerianStates.map(function (item) {
+              {states.map(function (item) {
                 return (
                   <Picker.Item
                     key={item.state}
@@ -92,6 +80,7 @@ const EnterNumber = ({ navigation }: any) => {
           </Form>
         </View>
       </View>
+
       <View style={styles.submitBtnStyle}>
         <Button
           Color={Colors.primary}

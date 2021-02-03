@@ -5,8 +5,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
-import ProductDescription from "./ProductDescription";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import ProductDescription from "../Products/ProductDescription";
 import {
   NavigationTabProp,
   NavigationBottomTabScreenComponent,
@@ -16,7 +15,7 @@ type Props = {
   navigation: NavigationTabProp<{ userId: string }>;
 };
 
-const Account: NavigationBottomTabScreenComponent<Props> = (props) => {
+const Cart: NavigationBottomTabScreenComponent<Props> = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.display}>
@@ -43,17 +42,6 @@ const Account: NavigationBottomTabScreenComponent<Props> = (props) => {
       <ProductDescription />
     </View>
   );
-};
-
-Account.navigationOptions = {
-  tabBarLabel: "Account",
-  tabBarIcon: ({ tintColor }) => (
-    <MaterialCommunityIcons
-      name="account-arrow-right-outline"
-      size={20}
-      color={tintColor}
-    />
-  ),
 };
 
 const styles = StyleSheet.create({
@@ -94,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Account;
+export default Cart;

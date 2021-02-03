@@ -1,60 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { View, StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { SearchBar } from "react-native-elements";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   NavigationTabProp,
   NavigationBottomTabScreenComponent,
 } from "react-navigation-tabs";
 import Colors from "../../constants/Colors";
-import FindProductList from "./FindProductList";
+import FindProductList from "../Products/FindProductList";
+import { useScrollToTop } from "@react-navigation/native";
 
 type Props = {
   navigation: NavigationTabProp<{ userId: string }>;
 };
 
-const Explore: NavigationBottomTabScreenComponent<Props> = (props) => {
+const ExploreScreen: NavigationBottomTabScreenComponent<Props> = (props) => {
   const [search, setSearch] = useState<string>("");
+
+  const ref = useRef(null);
+
+  useScrollToTop(ref);
+
   return (
     <SafeAreaView style={{ backgroundColor: "#FfFfFf" }}>
       <View style={{ alignItems: "center" }}>
-        <Text
-          style={{
-            fontFamily: "gilroy-bold",
-            fontSize: 20,
-            color: "#181725",
-            marginBottom: hp("1.4%"),
-          }}
-        >
-          Find Products
-        </Text>
+        <Text style={styles.Findproducts}>Find Products</Text>
         <SearchBar
-          inputStyle={{
-            backgroundColor: "#F2F3F2",
-            fontSize: 14,
-            fontFamily: "gilroy-bold",
-            color: "#7C7C7C",
-          }}
-          inputContainerStyle={{
-            backgroundColor: "#F2F3F2",
-            borderRadius: 15,
-            height: hp("6%"),
-          }}
+          inputStyle={styles.searchbar}
+          inputContainerStyle={styles.inputContainerStyle}
           placeholder="Search Store"
           onChangeText={setSearch}
           value={search}
           lightTheme={true}
-          containerStyle={{
-            width: wp("98%"),
-            backgroundColor: "#ffffff",
-          }}
+          containerStyle={styles.containerStyle}
         />
       </View>
-      <ScrollView>
+      <ScrollView ref={ref}>
         <View style={styles.container}>
           <FindProductList
             productname1="Fresh Fruits And Vegetable"
@@ -115,13 +99,6 @@ const Explore: NavigationBottomTabScreenComponent<Props> = (props) => {
   );
 };
 
-Explore.navigationOptions = {
-  tabBarLabel: "Explore",
-  tabBarIcon: ({ tintColor }) => (
-    <MaterialCommunityIcons name="text-search" size={20} color={tintColor} />
-  ),
-};
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
@@ -131,6 +108,27 @@ const styles = StyleSheet.create({
   },
   productView: {
     width: wp("100%"),
+  },
+  Findproducts: {
+    fontFamily: "gilroy-bold",
+    fontSize: 20,
+    color: "#181725",
+    marginBottom: hp("1.4%"),
+  },
+  searchbar: {
+    backgroundColor: "#F2F3F2",
+    fontSize: 14,
+    fontFamily: "gilroy-bold",
+    color: "#7C7C7C",
+  },
+  inputContainerStyle: {
+    backgroundColor: "#F2F3F2",
+    borderRadius: 15,
+    height: hp("6%"),
+  },
+  containerStyle: {
+    width: wp("98%"),
+    backgroundColor: "#ffffff",
   },
   carrot: {
     resizeMode: "contain",
@@ -200,4 +198,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Explore;
+export default ExploreScreen;

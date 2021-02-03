@@ -5,15 +5,17 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
-import { NavigationTabProp } from "react-navigation-tabs";
+import ProductDescription from "../Products/ProductDescription";
+import {
+  NavigationTabProp,
+  NavigationBottomTabScreenComponent,
+} from "react-navigation-tabs";
 
-import ProductDescription from "./ProductDescription";
+type Props = {
+  navigation: NavigationTabProp<{ userId: string }>;
+};
 
-interface Navigation {
-  navigation: NavigationTabProp<{ screen: string }>;
-}
-
-const ProductDetails = ({ navigation }: Navigation) => {
+const Account: NavigationBottomTabScreenComponent<Props> = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.display}>
@@ -21,7 +23,7 @@ const ProductDetails = ({ navigation }: Navigation) => {
           <TouchableOpacity
             style={styles.back}
             onPress={() => {
-              navigation.navigate("ProductList");
+              props.navigation.navigate("ProductList");
             }}
           >
             <Ionicons name="chevron-back-outline" size={24} color="#212121" />
@@ -40,13 +42,6 @@ const ProductDetails = ({ navigation }: Navigation) => {
       <ProductDescription />
     </View>
   );
-};
-
-ProductDetails.navigationOptions = () => {
-  return {
-    tabBarVisible: false,
-    headerShown: false,
-  };
 };
 
 const styles = StyleSheet.create({
@@ -87,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductDetails;
+export default Account;

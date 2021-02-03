@@ -122,7 +122,7 @@ const Signup = ({ navigation }: any) => {
         <Button
           Color={Colors.primary}
           onPress={() => {
-            navigation.navigate("ProductFlow");
+            navigation.navigate("ProductTab");
           }}
           style={styles.submitbtn}
         >

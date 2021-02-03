@@ -2,9 +2,8 @@ import "react-native-gesture-handler";
 import React, { useState } from "react";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
-import NavigationContainerScreen from "./navigation/NavigationContainer";
 import { View, StatusBar } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import MainNavigator from "./src/navigation/MainNavigator";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -30,11 +29,9 @@ export default function App() {
     );
   }
   return (
-    <NavigationContainer>
-      {/* <View style={{ flex: 1 }}>
-        <StatusBar hidden={true} /> */}
-      <NavigationContainerScreen />
-      {/* </View> */}
-    </NavigationContainer>
+    <View style={{ flex: 1 }}>
+      <StatusBar hidden={true} />
+      <MainNavigator />
+    </View>
   );
 }

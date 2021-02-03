@@ -9,12 +9,12 @@ import EnterNumber from "../screens/auth/EnterNumber";
 import EnterOtp from "../screens/auth/EnterOtp";
 import EnterLocation from "../screens/auth/EnterLocation";
 import Signup from "../screens/auth/Signup";
-import ProductList from "../screens/Products/ProductList";
+import ProductList from "../screens/mainScreens/Shop";
 import ProductDetails from "../screens/Products/ProductDetails";
-import Explore from "../screens/Products/Explore";
-import Cart from "../screens/Products/Cart";
-import Favourite from "../screens/Products/Favourite";
-import Account from "../screens/Products/Account";
+import ExploreScreen from "../screens/mainScreens/Explore";
+import Cart from "../screens/mainScreens/Cart";
+import Favourite from "../screens/mainScreens/Favourite";
+import Account from "../screens/mainScreens/Account";
 
 const AuthFlow = createStackNavigator({
   EnterNumber: EnterNumber,
@@ -27,7 +27,7 @@ const AuthFlow = createStackNavigator({
 const ProductFlow = createBottomTabNavigator(
   {
     ProductList: ProductList,
-    Explore: Explore,
+    Explore: ExploreScreen,
     Cart: Cart,
     Favourite: Favourite,
     Account: Account,

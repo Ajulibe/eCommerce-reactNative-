@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   StyleSheet,
@@ -13,76 +13,47 @@ import {
 } from "react-native-responsive-screen";
 import { SearchBar } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import Products from "./Products";
-import CategoryTitle from "./CategoryTitle";
-import Groceries from "./Groceries";
+import Products from "../Products/Products";
+import CategoryTitle from "../Products/CategoryTitle";
+import Groceries from "../Products/Groceries";
 import {
   NavigationTabProp,
   NavigationBottomTabScreenComponent,
 } from "react-navigation-tabs";
-import { Entypo } from "@expo/vector-icons";
-type RootStackParamList = {
-  ProductList: { scrollToTop: () => void };
-};
-
-type ProductListScreenProp = NavigationTabProp<
-  RootStackParamList,
-  "ProductList"
->;
+import { useScrollToTop } from "@react-navigation/native";
 
 type Props = {
-  navigation: ProductListScreenProp;
+  navigation: NavigationTabProp<"Shop">;
 };
 
 const ProductList: NavigationBottomTabScreenComponent<Props> = (props) => {
   const [search, setSearch] = useState<string>("");
 
+  const ref = useRef(null);
+
+  useScrollToTop(ref);
+
   return (
     <SafeAreaView style={{ backgroundColor: "#FfFfFf" }}>
-      <ScrollView>
+      <ScrollView ref={ref}>
         <View style={styles.container}>
           <Image
             style={styles.carrot}
             source={require("../../images/images/ColoredCarrot.png")}
           />
-          <Text
-            style={{
-              fontFamily: "gilroy-bold",
-              fontSize: 18,
-              color: "#4C4F4D",
-              marginBottom: hp("1.4%"),
-            }}
-          >
-            Dhaka, Banassre
-          </Text>
+          <Text style={styles.header}>Dhaka, Banassre</Text>
           <SearchBar
-            inputStyle={{
-              backgroundColor: "#F2F3F2",
-              fontSize: 14,
-              fontFamily: "gilroy-bold",
-              color: "#7C7C7C",
-            }}
-            inputContainerStyle={{
-              backgroundColor: "#F2F3F2",
-              borderRadius: 15,
-              height: hp("5%"),
-            }}
+            inputStyle={styles.SearchBar}
+            inputContainerStyle={styles.inputContainerStyle}
             placeholder="Search Store"
             onChangeText={setSearch}
             value={search}
             lightTheme={true}
-            containerStyle={{
-              width: wp("98%"),
-              backgroundColor: "#ffffff",
-            }}
+            containerStyle={styles.containerStyle}
           />
           <TouchableOpacity style={{ marginBottom: hp("1.4%") }}>
             <Image
-              style={{
-                resizeMode: "contain",
-                height: hp("18%"),
-                width: wp("90%"),
-              }}
+              style={styles.ImageStyle}
               source={require("../../images/images/banner.png")}
             />
           </TouchableOpacity>
@@ -103,33 +74,40 @@ const ProductList: NavigationBottomTabScreenComponent<Props> = (props) => {
   );
 };
 
-///to pass functions from the body of the component to the navigation options,
-//we must firstly set up the function as a parameter using navigation.setParams and
-//later get it using navigation.getParams.
-ProductList.navigationOptions = () => ({
-  tabBarLabel: "Shop",
-  tabBarIcon: ({ tintColor }) => (
-    <Entypo name="shop" size={18} color={tintColor} />
-  ),
-  tabBarOnPress: ({ navigation, defaultHandler }) => {
-    defaultHandler();
-    if (navigation.isFocused()) {
-      const scrollToTop = navigation.getParam("scrollToTop", null);
-      if (scrollToTop) {
-        scrollToTop();
-      }
-    }
-  },
-});
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
     flex: 1,
     alignItems: "center",
   },
+  SearchBar: {
+    backgroundColor: "#F2F3F2",
+    fontSize: 14,
+    fontFamily: "gilroy-bold",
+    color: "#7C7C7C",
+  },
+  header: {
+    fontFamily: "gilroy-bold",
+    fontSize: 18,
+    color: "#4C4F4D",
+    marginBottom: hp("1.4%"),
+  },
   productView: {
     width: wp("100%"),
+  },
+  inputContainerStyle: {
+    backgroundColor: "#F2F3F2",
+    borderRadius: 15,
+    height: hp("5%"),
+  },
+  containerStyle: {
+    width: wp("98%"),
+    backgroundColor: "#ffffff",
+  },
+  ImageStyle: {
+    resizeMode: "contain",
+    height: hp("18%"),
+    width: wp("90%"),
   },
   carrot: {
     resizeMode: "contain",

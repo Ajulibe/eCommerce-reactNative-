@@ -5,8 +5,8 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
-import ProductDescription from "./ProductDescription";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import ProductDescription from "../Products/ProductDescription";
+import { AntDesign } from "@expo/vector-icons";
 import {
   NavigationTabProp,
   NavigationBottomTabScreenComponent,
@@ -16,7 +16,7 @@ type Props = {
   navigation: NavigationTabProp<{ userId: string }>;
 };
 
-const Cart: NavigationBottomTabScreenComponent<Props> = (props) => {
+const Favourite: NavigationBottomTabScreenComponent<Props> = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.display}>
@@ -45,10 +45,10 @@ const Cart: NavigationBottomTabScreenComponent<Props> = (props) => {
   );
 };
 
-Cart.navigationOptions = {
-  tabBarLabel: "Cart",
+Favourite.navigationOptions = {
+  tabBarLabel: "Favourite",
   tabBarIcon: ({ tintColor }) => (
-    <MaterialCommunityIcons name="cart-outline" size={20} color={tintColor} />
+    <AntDesign name="hearto" size={20} color={tintColor} />
   ),
 };
 
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Cart;
+export default Favourite;
