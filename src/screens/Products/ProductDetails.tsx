@@ -13,7 +13,7 @@ interface Navigation {
   navigation: NavigationTabProp<{ screen: string }>;
 }
 
-const ProductDetails = ({ navigation }: Navigation) => {
+const ProductDetails: React.FC<Navigation> = ({ navigation }) => {
   return (
     <View style={styles.screen}>
       <View style={styles.display}>
@@ -40,13 +40,6 @@ const ProductDetails = ({ navigation }: Navigation) => {
       <ProductDescription />
     </View>
   );
-};
-
-ProductDetails.navigationOptions = () => {
-  return {
-    tabBarVisible: false,
-    headerShown: false,
-  };
 };
 
 const styles = StyleSheet.create({

@@ -20,7 +20,7 @@ type Props = {
 const ExploreScreen: NavigationBottomTabScreenComponent<Props> = (props) => {
   const [search, setSearch] = useState<string>("");
 
-  const ref = useRef(null);
+  const ref = useRef<ScrollView | null>(null);
 
   useScrollToTop(ref);
 

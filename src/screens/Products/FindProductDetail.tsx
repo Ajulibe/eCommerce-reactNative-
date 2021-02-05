@@ -1,151 +1,147 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   View,
   StyleSheet,
-  Text,
-  Image,
   ScrollView,
-  SafeAreaView,
+  TouchableOpacity,
+  Text,
+  Alert,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { SearchBar } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import Products from "./Products";
-import CategoryTitle from "./CategoryTitle";
-import Groceries from "./Groceries";
-import {
-  NavigationTabProp,
-  NavigationBottomTabScreenComponent,
-} from "react-navigation-tabs";
-import { Entypo } from "@expo/vector-icons";
-type RootStackParamList = {
-  ProductList: { scrollToTop: () => void };
-};
+import { Ionicons } from "@expo/vector-icons";
+import { NavigationTabProp } from "react-navigation-tabs";
+import { useScrollToTop } from "@react-navigation/native";
+import Beverages from "./Beverages";
 
-type ProductListScreenProp = NavigationTabProp<
-  RootStackParamList,
-  "ProductList"
->;
+interface Navigation {
+  navigation: NavigationTabProp<{ screen: string }>;
+}
 
-type Props = {
-  navigation: ProductListScreenProp;
-};
-
-const FindProductDetail: NavigationBottomTabScreenComponent<Props> = (
-  props
-) => {
+const FindProductDetail: React.FC<Navigation> = ({ navigation }) => {
   const [search, setSearch] = useState<string>("");
+  const ref = useRef<ScrollView | null>(null);
+
+  useScrollToTop(ref);
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#FfFfFf" }}>
-      <ScrollView>
-        <View style={styles.container}>
-          <Image
-            style={styles.carrot}
-            source={require("../../images/images/ColoredCarrot.png")}
-          />
-          <Text
-            style={{
-              fontFamily: "gilroy-bold",
-              fontSize: 18,
-              color: "#4C4F4D",
-              marginBottom: hp("1.4%"),
+    <View style={styles.screen}>
+      <View style={styles.display}>
+        <View style={styles.headers}>
+          <TouchableOpacity
+            style={styles.back}
+            onPress={() => {
+              navigation.navigate("Explore");
             }}
           >
-            Dhaka, Banassre
-          </Text>
-          <SearchBar
-            inputStyle={{
-              backgroundColor: "#F2F3F2",
-              fontSize: 14,
-              fontFamily: "gilroy-bold",
-              color: "#7C7C7C",
-            }}
-            inputContainerStyle={{
-              backgroundColor: "#F2F3F2",
-              borderRadius: 15,
-              height: hp("5%"),
-            }}
-            placeholder="Search Store"
-            onChangeText={setSearch}
-            value={search}
-            lightTheme={true}
-            containerStyle={{
-              width: wp("98%"),
-              backgroundColor: "#ffffff",
-            }}
-          />
-          <TouchableOpacity style={{ marginBottom: hp("1.4%") }}>
-            <Image
-              style={{
-                resizeMode: "contain",
-                height: hp("18%"),
-                width: wp("90%"),
-              }}
-              source={require("../../images/images/banner.png")}
-            />
+            <Ionicons name="chevron-back-outline" size={24} color="#212121" />
           </TouchableOpacity>
-          <CategoryTitle title="Exclusive Offer" />
-          <Products
+          <TouchableOpacity
+            style={styles.filter}
             onPress={() => {
-              props.navigation.navigate("ProductDetails");
+              navigation.navigate("FilterScreen");
             }}
-          />
-          <CategoryTitle title="Best Selling" />
-          <Products />
-          <CategoryTitle title="Groceries" />
-          <Groceries />
-          <Products />
+          >
+            <Ionicons name="filter-outline" size={22} color="black" />
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+        <View style={{ alignItems: "center" }}>
+          <Text style={styles.Findproducts}>Beverages</Text>
+        </View>
+        <ScrollView ref={ref}>
+          <View style={styles.container}>
+            <Beverages
+              onPress1={() => {
+                Alert.alert("clicked");
+              }}
+              productname1="Diet Coke"
+              productname2="Sprite Can"
+              source1={require("../../images/images/diet.png")}
+              source2={require("../../images/images/sprite.png")}
+            />
+            <Beverages
+              productname1="Apple & Grape"
+              productname2="Orange Juice"
+              source1={require("../../images/images/grape.png")}
+              source2={require("../../images/images/juice.png")}
+            />
+            <Beverages
+              productname1="Coca Cola Can"
+              productname2="Pepsi Can"
+              source1={require("../../images/images/coke.png")}
+              source2={require("../../images/images/pepsi.png")}
+            />
+          </View>
+        </ScrollView>
+      </View>
+    </View>
   );
 };
-
-///to pass functions from the body of the component to the navigation options,
-//we must firstly set up the function as a parameter using navigation.setParams and
-//later get it using navigation.getParams.
-FindProductDetail.navigationOptions = () => ({
-  tabBarLabel: "Shop",
-  tabBarIcon: ({ tintColor }) => (
-    <Entypo name="shop" size={18} color={tintColor} />
-  ),
-  tabBarOnPress: ({ navigation, defaultHandler }) => {
-    defaultHandler();
-    if (navigation.isFocused()) {
-      const scrollToTop = navigation.getParam("scrollToTop", null);
-      if (scrollToTop) {
-        scrollToTop();
-      }
-    }
-  },
-});
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
     flex: 1,
     alignItems: "center",
+    paddingTop: hp("1.2%"),
   },
-  productView: {
+  screen: {
+    backgroundColor: "#ffffff",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  display: {
+    flex: 1.8,
     width: wp("100%"),
+    backgroundColor: "#FFFFFF",
+    borderBottomRightRadius: 25,
+    borderBottomLeftRadius: 25,
   },
-  carrot: {
-    resizeMode: "contain",
-    height: hp("7%"),
-    width: wp("9%"),
-    marginTop: hp("0.5%"),
-    marginBottom: hp("1%"),
-  },
-  exclusive: {
-    width: wp("90%"),
+
+  headers: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  back: {
+    marginTop: hp("4%"),
+    marginLeft: wp("3%"),
+  },
+  filter: {
+    marginTop: hp("4%"),
+    marginRight: wp("4%"),
+  },
+  products: {
+    resizeMode: "contain",
+    height: hp("25%"),
+    width: wp("70%"),
+  },
+  productContainer: {
     alignItems: "center",
-    marginBottom: hp("6%"),
+    justifyContent: "center",
+  },
+  Findproducts: {
+    fontFamily: "gilroy-bold",
+    fontSize: 20,
+    color: "#181725",
+    marginBottom: hp("1.4%"),
+  },
+  searchbar: {
+    backgroundColor: "#F2F3F2",
+    fontSize: 14,
+    fontFamily: "gilroy-bold",
+    color: "#7C7C7C",
+  },
+  inputContainerStyle: {
+    backgroundColor: "#F2F3F2",
+    borderRadius: 15,
+    height: hp("6%"),
+  },
+  containerStyle: {
+    width: wp("98%"),
+    backgroundColor: "#ffffff",
   },
 });
 
