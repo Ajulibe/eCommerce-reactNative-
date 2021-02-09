@@ -2,3 +2,5 @@ use - docker-compose up (to build and run the image)
 use docker ps (list all the running containers)
 use docker image ls (list all te docker images created)
 use docker kill <container_name> (kill that particular container)
+the last environment variable in the Dockerfile REACT_NATIVE_PACKAGER_HOSTNAME is the IP address your device and laptop
+--- note the two devices should be connected on the same network
