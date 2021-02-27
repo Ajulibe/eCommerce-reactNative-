@@ -7,7 +7,7 @@ import {
 
 interface Props {
   Color: string;
-  onPress: () => void;
+  onPress?: () => void;
   children: any;
   style: any;
 }

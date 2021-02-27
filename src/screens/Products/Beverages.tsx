@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   addbtn: {
     width: wp("13%"),
-    height: hp("7%"),
+    height: wp("13%"),
     borderRadius: 19,
     backgroundColor: Colors.primary,
     justifyContent: "center",

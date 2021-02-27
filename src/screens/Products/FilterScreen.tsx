@@ -1,17 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { NavigationTabProp } from "react-navigation-tabs";
-import { EvilIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { CheckBox } from "react-native-elements";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import Button from "../../components/UI/Button";
 import Colors from "../../constants/Colors";

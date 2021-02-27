@@ -148,7 +148,6 @@ const styles = StyleSheet.create({
   containerStyle: {
     width: wp("90%"),
     backgroundColor: "#ffffff",
-    // marginLeft: wp("2%"),
     borderWidth: 0,
     borderTopWidth: 0,
     borderBottomWidth: 0,
