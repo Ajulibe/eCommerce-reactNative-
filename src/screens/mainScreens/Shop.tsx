@@ -103,6 +103,9 @@ const styles = StyleSheet.create({
   containerStyle: {
     width: wp("98%"),
     backgroundColor: "#ffffff",
+    borderWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
   },
   ImageStyle: {
     resizeMode: "contain",

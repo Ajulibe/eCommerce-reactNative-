@@ -26,7 +26,10 @@ const Groceries = ({ navigation }: any) => {
         <View
           style={[
             styles.productContainer,
-            { backgroundColor: "#F7FCF8", borderColor: "#53B175" },
+            {
+              backgroundColor: "rgba(83,177,117,0.2)",
+              borderColor: "rgba(83,177,117,0.3)",
+            },
           ]}
         >
           <Image
@@ -47,7 +50,10 @@ const Groceries = ({ navigation }: any) => {
         <View
           style={[
             styles.productContainer,
-            { backgroundColor: "#F7FCF8", borderColor: "#53B175" },
+            {
+              backgroundColor: "rgba(83,177,117,0.2)",
+              borderColor: "rgba(83,177,117,0.3)",
+            },
           ]}
         >
           <Image

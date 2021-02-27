@@ -21,10 +21,10 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="SplashScreen" headerMode={"none"}>
-        <MainStack.Screen name="SplashScreen" component={SplashScreen} />
+        {/* <MainStack.Screen name="SplashScreen" component={SplashScreen} />
         <MainStack.Screen name="GetStarted" component={GetStarted} />
         <MainStack.Screen name="Auth" component={PhoneAuth} />
-        <MainStack.Screen name="Register" component={AuthRootStack} />
+        <MainStack.Screen name="Register" component={AuthRootStack} /> */}
         <MainStack.Screen name="Products" component={ProductTab} />
       </MainStack.Navigator>
     </NavigationContainer>

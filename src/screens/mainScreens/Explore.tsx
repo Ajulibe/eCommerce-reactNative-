@@ -1,5 +1,12 @@
 import React, { useState, useRef } from "react";
-import { View, StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,6 +19,7 @@ import {
 import Colors from "../../constants/Colors";
 import FindProductList from "../Products/FindProductList";
 import { useScrollToTop } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 type Props = {
   navigation: NavigationTabProp<{ userId: string }>;
@@ -26,27 +34,37 @@ const ExploreScreen: NavigationBottomTabScreenComponent<Props> = (props) => {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#FfFfFf" }}>
-      <View style={{ alignItems: "center" }}>
+      <View style={{}}>
         <Text style={styles.Findproducts}>Find Products</Text>
-        <SearchBar
-          inputStyle={styles.searchbar}
-          inputContainerStyle={styles.inputContainerStyle}
-          placeholder="Search Store"
-          onChangeText={setSearch}
-          value={search}
-          lightTheme={true}
-          containerStyle={styles.containerStyle}
-        />
+        <View style={styles.searchContainer}>
+          <SearchBar
+            inputStyle={styles.searchbar}
+            inputContainerStyle={styles.inputContainerStyle}
+            placeholder="Search Store"
+            onChangeText={setSearch}
+            value={search}
+            lightTheme={true}
+            containerStyle={styles.containerStyle}
+          />
+          <TouchableOpacity
+            style={styles.filter}
+            onPress={() => {
+              props.navigation.navigate("FilterScreen2");
+            }}
+          >
+            <Ionicons name="filter-outline" size={22} color="black" />
+          </TouchableOpacity>
+        </View>
       </View>
       <ScrollView ref={ref}>
         <View style={styles.container}>
           <FindProductList
             productname1="Fresh Fruits And Vegetable"
             productname2="Cooking Oil And Ghee"
-            borderColor2="#FFC589"
-            backgroundColor2="#FFFBF8"
-            borderColor="#53B175"
-            backgroundColor="#F7FCF8"
+            borderColor2="rgba(248, 164, 76, 0.7)"
+            backgroundColor2="rgba(248, 164, 76, 0.1)"
+            borderColor="rgba(83,177,117,0.7)"
+            backgroundColor="rgba(83, 177, 117, 0.1)"
             source1={require("../../images/images/vegetable.png")}
             source2={require("../../images/images/oil.png")}
           />
@@ -54,9 +72,9 @@ const ExploreScreen: NavigationBottomTabScreenComponent<Props> = (props) => {
             productname1="Meat And Fish"
             productname2="Bakery And Snacks"
             borderColor2="#D3B0E0"
-            backgroundColor2="#FCF4FF"
+            backgroundColor2="rgba(211, 176, 224, 0.25)"
             borderColor="#F7A593"
-            backgroundColor="#FFF7F5"
+            backgroundColor="rgba(247, 165, 147, 0.25)"
             source1={require("../../images/images/meat.png")}
             source2={require("../../images/images/bakery.png")}
           />
@@ -64,9 +82,9 @@ const ExploreScreen: NavigationBottomTabScreenComponent<Props> = (props) => {
             productname1="Diary And Eggs"
             productname2="Beverages"
             borderColor2="#B7DFF5"
-            backgroundColor2="#ECF9FF"
+            backgroundColor2="rgba(183, 223, 245, 0.25)"
             borderColor="#FDE598"
-            backgroundColor="#FFFCF4"
+            backgroundColor="rgba(253, 229, 152, 0.25)"
             source1={require("../../images/images/Diary.png")}
             source2={require("../../images/images/Beverage.png")}
             onPress2={() => {
@@ -86,10 +104,10 @@ const ExploreScreen: NavigationBottomTabScreenComponent<Props> = (props) => {
           <FindProductList
             productname1="Fresh Fruits And Vegetable"
             productname2="Cooking Oil And Ghee"
-            borderColor2="#FFC589"
-            backgroundColor2="#FFFBF8"
-            borderColor="#53B175"
-            backgroundColor="#F7FCF8"
+            borderColor="#D3B0E0"
+            backgroundColor="rgba(211, 176, 224, 0.25)"
+            borderColor2="#F7A593"
+            backgroundColor2="rgba(247, 165, 147, 0.25)"
             source1={require("../../images/images/meat.png")}
             source2={require("../../images/images/bakery.png")}
           />
@@ -114,6 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#181725",
     marginBottom: hp("1.4%"),
+    textAlign: "center",
   },
   searchbar: {
     backgroundColor: "#F2F3F2",
@@ -127,8 +146,12 @@ const styles = StyleSheet.create({
     height: hp("6%"),
   },
   containerStyle: {
-    width: wp("98%"),
+    width: wp("90%"),
     backgroundColor: "#ffffff",
+    // marginLeft: wp("2%"),
+    borderWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
   },
   carrot: {
     resizeMode: "contain",
@@ -195,6 +218,16 @@ const styles = StyleSheet.create({
     color: "#181725",
     fontFamily: "gilroy-bold",
     fontSize: 18,
+  },
+  filter: {
+    marginTop: hp("4%"),
+    marginRight: wp("4%"),
+  },
+  searchContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    width: wp("100%"),
   },
 });
 

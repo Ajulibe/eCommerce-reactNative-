@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
   },
   next: {
     width: wp("15%"),
-    height: hp("8.5%"),
-    borderRadius: hp("7.5%"),
+    height: wp("15%"),
+    borderRadius: wp("15%"),
     backgroundColor: "#53B175",
     shadowOffset: {
       width: 0,

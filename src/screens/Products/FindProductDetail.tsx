@@ -33,7 +33,7 @@ const FindProductDetail: React.FC<Navigation> = ({ navigation }) => {
           <TouchableOpacity
             style={styles.back}
             onPress={() => {
-              navigation.navigate("Explore");
+              navigation.navigate("ProductFlowTab");
             }}
           >
             <Ionicons name="chevron-back-outline" size={24} color="#212121" />
