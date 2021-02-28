@@ -50,7 +50,7 @@ const FindProductDetail: React.FC<Navigation> = ({ navigation }) => {
         <View style={{ alignItems: "center" }}>
           <Text style={styles.Findproducts}>Beverages</Text>
         </View>
-        <ScrollView ref={ref}>
+        <ScrollView ref={ref} showsVerticalScrollIndicator={false}>
           <View style={styles.container}>
             <Beverages
               onPress1={() => {

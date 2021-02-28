@@ -13,9 +13,9 @@ import {
 } from "react-native-responsive-screen";
 import { SearchBar } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import Products from "../Products/Products";
-import CategoryTitle from "../Products/CategoryTitle";
-import Groceries from "../Products/Groceries";
+import Products from "../stackNavScreens/Products";
+import CategoryTitle from "../stackNavScreens/CategoryTitle";
+import Groceries from "../stackNavScreens/Groceries";
 import {
   NavigationTabProp,
   NavigationBottomTabScreenComponent,
@@ -35,22 +35,26 @@ const ProductList: NavigationBottomTabScreenComponent<Props> = (props) => {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#FfFfFf" }}>
-      <ScrollView ref={ref}>
+      <View style={styles.headerContainer}>
+        <Image
+          style={styles.carrot}
+          source={require("../../images/images/ColoredCarrot.png")}
+        />
+        <Text style={styles.header}>Dhaka, Banassre</Text>
+
+        <SearchBar
+          inputStyle={styles.SearchBar}
+          inputContainerStyle={styles.inputContainerStyle}
+          placeholder="Search Store"
+          onChangeText={setSearch}
+          value={search}
+          lightTheme={true}
+          containerStyle={styles.containerStyle}
+        />
+      </View>
+
+      <ScrollView ref={ref} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
-          <Image
-            style={styles.carrot}
-            source={require("../../images/images/ColoredCarrot.png")}
-          />
-          <Text style={styles.header}>Dhaka, Banassre</Text>
-          <SearchBar
-            inputStyle={styles.SearchBar}
-            inputContainerStyle={styles.inputContainerStyle}
-            placeholder="Search Store"
-            onChangeText={setSearch}
-            value={search}
-            lightTheme={true}
-            containerStyle={styles.containerStyle}
-          />
           <TouchableOpacity style={{ marginBottom: hp("1.4%") }}>
             <Image
               style={styles.ImageStyle}
@@ -125,6 +129,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: hp("6%"),
+  },
+  headerContainer: {
+    alignItems: "center",
   },
 });
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Shop from "../screens/mainScreens/Shop";
-import ExploreScreen from "../screens/mainScreens/Explore";
-import Cart from "../screens/mainScreens/Cart";
-import Favourite from "../screens/mainScreens/Favourite";
-import Account from "../screens/mainScreens/Account";
+import Shop from "../screens/bottomTabScreens/Shop";
+import ExploreScreen from "../screens/bottomTabScreens/Explore";
+import Cart from "../screens/bottomTabScreens/Cart";
+import Favourite from "../screens/bottomTabScreens/Favourite";
+import Account from "../screens/bottomTabScreens/Account";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";

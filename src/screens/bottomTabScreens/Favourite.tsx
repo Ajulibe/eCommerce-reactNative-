@@ -5,7 +5,8 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
-import ProductDescription from "../Products/ProductDescription";
+import ProductDescription from "../stackNavScreens/ProductDescription";
+import { AntDesign } from "@expo/vector-icons";
 import {
   NavigationTabProp,
   NavigationBottomTabScreenComponent,
@@ -15,7 +16,7 @@ type Props = {
   navigation: NavigationTabProp<{ userId: string }>;
 };
 
-const Account: NavigationBottomTabScreenComponent<Props> = (props) => {
+const Favourite: NavigationBottomTabScreenComponent<Props> = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.display}>
@@ -42,6 +43,13 @@ const Account: NavigationBottomTabScreenComponent<Props> = (props) => {
       <ProductDescription />
     </View>
   );
+};
+
+Favourite.navigationOptions = {
+  tabBarLabel: "Favourite",
+  tabBarIcon: ({ tintColor }) => (
+    <AntDesign name="hearto" size={20} color={tintColor} />
+  ),
 };
 
 const styles = StyleSheet.create({
@@ -82,4 +90,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Account;
+export default Favourite;

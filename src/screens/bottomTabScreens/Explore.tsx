@@ -17,7 +17,7 @@ import {
   NavigationBottomTabScreenComponent,
 } from "react-navigation-tabs";
 import Colors from "../../constants/Colors";
-import FindProductList from "../Products/FindProductList";
+import FindProductList from "../stackNavScreens/FindProductList";
 import { useScrollToTop } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -44,7 +44,7 @@ const ExploreScreen: NavigationBottomTabScreenComponent<Props> = (props) => {
             onChangeText={setSearch}
             value={search}
             lightTheme={true}
-            containerStyle={styles.containerStyle}
+            containerStyle={styles.containerStyling}
           />
           <TouchableOpacity
             style={styles.filter}
@@ -145,10 +145,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: hp("6%"),
   },
-  containerStyle: {
+  containerStyling: {
     width: wp("90%"),
     backgroundColor: "#ffffff",
-    borderWidth: 0,
     borderTopWidth: 0,
     borderBottomWidth: 0,
   },
@@ -219,14 +218,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   filter: {
-    marginTop: hp("4%"),
+    marginTop: hp("3%"),
     marginRight: wp("4%"),
   },
   searchContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "baseline",
-    width: wp("100%"),
   },
 });
 

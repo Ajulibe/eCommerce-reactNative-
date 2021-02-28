@@ -9,7 +9,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import Button from "../../components/UI/Button";
 import Colors from "../../constants/Colors";
 import { useScrollToTop } from "@react-navigation/native";
-import CartProduct from "../../screens/Products/CartProduct";
+import CartProduct from "../stackNavScreens/CartProduct";
 
 interface Navigation {
   navigation: NavigationTabProp<{ screen: string }>;
@@ -25,7 +25,7 @@ const FilterScreen: React.FC<Navigation> = ({ navigation }) => {
       <View style={styles.FindproductsContainer}>
         <Text style={styles.Findproducts}>Cart</Text>
       </View>
-      <ScrollView ref={ref}>
+      <ScrollView ref={ref} showsVerticalScrollIndicator={false}>
         <CartProduct
           productName="Bell Pepper Red"
           source={require("../../images/images/berries.png")}

@@ -5,16 +5,16 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import GetStarted from "../screens/GetStarted";
 import SplashScreen from "../screens/SplashScreen";
 import PhoneAuth from "../screens/PhoneAuth";
-import EnterNumber from "../screens/auth/EnterNumber";
-import EnterOtp from "../screens/auth/EnterOtp";
-import EnterLocation from "../screens/auth/EnterLocation";
-import Signup from "../screens/auth/Signup";
-import ProductList from "../screens/mainScreens/Shop";
-import ProductDetails from "../screens/Products/ProductDetails";
-import ExploreScreen from "../screens/mainScreens/Explore";
-import Cart from "../screens/mainScreens/Cart";
-import Favourite from "../screens/mainScreens/Favourite";
-import Account from "../screens/mainScreens/Account";
+import EnterNumber from "../screens/authScreens/EnterNumber";
+import EnterOtp from "../screens/authScreens/EnterOtp";
+import EnterLocation from "../screens/authScreens/EnterLocation";
+import Signup from "../screens/authScreens/Signup";
+import ProductList from "../screens/bottomTabScreens/Shop";
+import ProductDetails from "../screens/stackNavScreens/ProductDetails";
+import ExploreScreen from "../screens/bottomTabScreens/Explore";
+import Cart from "../screens/bottomTabScreens/Cart";
+import Favourite from "../screens/bottomTabScreens/Favourite";
+import Account from "../screens/bottomTabScreens/Account";
 
 const AuthFlow = createStackNavigator({
   EnterNumber: EnterNumber,

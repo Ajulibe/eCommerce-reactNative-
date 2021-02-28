@@ -1,9 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import EnterNumber from "../screens/auth/EnterNumber";
-import EnterOtp from "../screens/auth/EnterOtp";
-import EnterLocation from "../screens/auth/EnterLocation";
-import Signup from "../screens/auth/Signup";
+import EnterNumber from "../screens/authScreens/EnterNumber";
+import EnterOtp from "../screens/authScreens/EnterOtp";
+import EnterLocation from "../screens/authScreens/EnterLocation";
+import Signup from "../screens/authScreens/Signup";
 import ProductTab from "./ProductTab";
 
 type RootStackParamList = {
